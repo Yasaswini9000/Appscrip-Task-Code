@@ -15,3 +15,35 @@ export default function Home() {
     }
     fetchProducts();
   }, []);
+  return (
+    <>
+      <Head>
+        <title>Discover Our Products</title>
+        <meta name="description" content="Discover and explore our wide range of products." />
+      </Head>
+
+      <div className="main-container">
+        <header>
+          <h1>Discover Our Products</h1>
+          <button className="filter-toggle" onClick={() => setFiltersVisible(!filtersVisible)}>
+            {filtersVisible ? 'Hide Filters' : 'Show Filters'}
+          </button>
+        </header>
+        <div className="content">
+          {filtersVisible && <FilterSidebar />}
+          <div className="product-list">
+            {products.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+        <footer>
+          <div className="footer-content">
+            <p>Contact Us</p>
+            <p>Follow Us: [Social Media Links]</p>
+          </div>
+        </footer>
+      </div>
+    </>
+  );
+}
